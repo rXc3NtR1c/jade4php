@@ -23,7 +23,7 @@ Added a simple php function to return a formatted php string allowing it to be s
 
     <?php echo htmlspecialchars($foo, ENT_QUOTES, 'UTF-8'); ?>
 
-Note: the formatted strings must be displayed Unescaped because the formatting includes <php and ?> characters.  Don't worry, the expression argument to the php function call is fully escaped at runtime. 
+Note: the formatted strings must be displayed Unescaped because the formatting includes <php and ?> characters.  Don't worry, the expression argument to the php function call is fully escaped at runtime.
 
 However, note that it is possible to set a no_escape flag:
 
@@ -47,10 +47,10 @@ However, note that it is possible to set a no_escape flag:
     doctype html
     //- normal jade variable
     - title = 'Example & Test';
-    //- php function call to format an escaped 
+    //- php function call to format an escaped
     //- echo statement of expression argument
     - test = php('$test_var + 1');
-    //- php function call to format an echo 
+    //- php function call to format an echo
     //- statement of expression argument without escape prcessing
     - bad = php('$foo', true);
     html
@@ -107,3 +107,15 @@ Will produce:
         <p>&lt;?php echo htmlspecialchars($test_var + 1, ENT_QUOTES, 'UTF-8'); ?&gt;</p>
       </body>
     </html>
+
+## Updates
+
+    :php
+        echo 'this is some stuff';
+        print('some more stuff');
+
+    :php echo 'some inline stuff';
+
+    a
+        :php(short=true, inline=true)
+            'more stuff'
